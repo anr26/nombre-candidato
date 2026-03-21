@@ -33,8 +33,25 @@
 
         .container { width: 100%; max-width: 500px; text-align: center; }
         
-        .logo { width: 270px; margin-bottom: 24px; border-radius: 0 !important; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.05)); }
+        .header-top { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            width: 100%; 
+            margin-bottom: 24px; 
+        }
         
+        .logo { width: 150px; border-radius: 0 !important; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.05)); }
+        
+        .social-links { 
+            display: flex; 
+            gap: 12px; 
+        } 
+        .social-links img { 
+            width: 28px; 
+            height: 28px; 
+        }
+
         .red-banner { 
             background-color: var(--primary-red); 
             color: white; 
@@ -116,28 +133,58 @@
             font-weight: 500; 
             line-height: 1.6; 
             margin: 32px 0;
+            text-align: center;
         }
 
-        .social-links { 
-            display: flex; 
-            justify-content: center; 
-            gap: 15px; 
-            margin: 24px 0; 
-        } 
-        .social-links a img { 
-            width: 24px; 
-            height: 24px; 
-            transition: transform 0.2s; 
-        } 
-        .social-links a:active img { 
-            transform: scale(0.9); 
+        .proposal-link {
+            margin: 24px 0;
+            font-weight: 700;
         }
+        .proposal-link a {
+            color: var(--primary-red);
+            text-decoration: underline;
+        }
+
         .footer-text { margin-top: 40px; font-size: 12px; color: var(--text-muted); line-height: 1.5; padding-bottom: 20px; }
         
         #loading-overlay { 
             position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
             background: rgba(255,255,255,0.9); display: flex; align-items: center; 
             justify-content: center; z-index: 1000; font-weight: 700; color: var(--primary-red);
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            align-items: center;
+            justify-content: center;
+        }
+        .modal-content {
+            background-color: white;
+            padding: 24px;
+            border-radius: 16px;
+            width: 90%;
+            max-width: 400px;
+            text-align: center;
+            box-shadow: var(--card-shadow);
+        }
+        .modal-title {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--text-dark);
+        }
+        .modal-btns {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
         }
     </style>
 
@@ -154,8 +201,16 @@
     <div id="loading-overlay">Cargando base de datos...</div>
 
     <div class="container">
-        <img src="padronapp1.png" alt="logo" class="logo">
-        <div class="red-banner">Padrón ANR 2026 - Fernando de la Mora</div>
+        <div class="header-top">
+            <img src="padronapp1.png" alt="logo" class="logo">
+            <div class="social-links">
+                <img src="facl.png" alt="Facebook">
+                <img src="insl.png" alt="Instagram">
+                <img src="whal.png" alt="WhatsApp">
+            </div>
+        </div>
+        
+        <div class="red-banner">Padrón ANR 2026 - Fndo. de la Mora</div>
         
         <div id="search-card" class="card">
             <div class="form-group">
@@ -179,15 +234,24 @@
             Lista: ___ &nbsp; Opción: ___
         </div>
 
-        <div class="social-links"> 
-            <a href="https://padronapp.github.io/padronapp/index.html" target="_blank"><img src="webl.png" alt="Web"></a> 
-            <a href="https://www.facebook.com/" target="_blank"><img src="facl.png" alt="Facebook"></a> 
-            <a href="https://www.instagram.com/" target="_blank"><img src="insl.png" alt="Instagram"></a> 
-            <a href="https://www.tiktok.com/" target="_blank"><img src="tikl.png" alt="TikTok"></a> 
-            <a href="https://wa.me/595992776729" target="_blank"><img src="whal.png" alt="WhatsApp"></a> 
+        <div class="proposal-link">
+            <a href="#" id="open-proposal">CONOCÉ NUESTRA PROPUESTA (ver)</a>
         </div>
+
         <div class="footer-text">
             Padrón Actualizado de Afiliados a la ANR para las Internas del 07-Junio-2026.
+        </div>
+    </div>
+
+    <!-- Proposal Modal -->
+    <div id="proposal-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-title">PROPUESTA</div>
+            <div class="modal-btns">
+                <button class="btn btn-orange" id="read-online">Leer en Linea</button>
+                <button class="btn btn-outline" id="download-pdf">Descargar PDF</button>
+                <button class="btn" style="color: var(--text-muted); margin-top: 8px;" id="close-modal">Cerrar</button>
+            </div>
         </div>
     </div>
 
@@ -203,6 +267,12 @@
         const containerDiv = document.querySelector('.container');
         const redBanner = document.querySelector('.red-banner');
         const resultContainer = document.getElementById('result-container');
+        
+        const modal = document.getElementById('proposal-modal');
+        const openBtn = document.getElementById('open-proposal');
+        const closeBtn = document.getElementById('close-modal');
+        const readOnlineBtn = document.getElementById('read-online');
+        const downloadPdfBtn = document.getElementById('download-pdf');
 
         loader.style.display = 'flex';
         
@@ -319,6 +389,35 @@
             currentRecord = null;
             renderResult(null);
             toggleSearchState(false);
+        });
+
+        // Modal Logic
+        openBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            modal.style.display = 'flex';
+        });
+
+        closeBtn.addEventListener('click', () => {
+            modal.style.display = 'none';
+        });
+
+        readOnlineBtn.addEventListener('click', () => {
+            window.open('propuesta.pdf', '_blank');
+            modal.style.display = 'none';
+        });
+
+        downloadPdfBtn.addEventListener('click', () => {
+            const link = document.createElement('a');
+            link.href = 'propuesta.pdf';
+            link.download = 'propuesta.pdf';
+            link.click();
+            modal.style.display = 'none';
+        });
+
+        window.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.style.display = 'none';
+            }
         });
 
         if ('serviceWorker' in navigator) {
