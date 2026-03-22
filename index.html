@@ -24,54 +24,64 @@
             display: flex; 
             flex-direction: column; 
             align-items: center; 
-            padding: 0;
+            padding: 20px 15px;
             background-color: var(--bg-gray); 
             color: var(--text-dark);
             margin: 0;
             min-height: 100vh;
         }
 
-        .container { width: 100%; max-width: 500px; text-align: center; padding: 0 10px; }
+        .container { width: 100%; max-width: 500px; text-align: center; }
         
-        .compact-header {
+        .header-top {
             display: flex; 
             justify-content: space-between; 
             align-items: center; 
-            background: white;
-            padding: 8px 12px;
-            border-bottom: 1px solid #eee;
-            margin-bottom: 10px;
-            width: calc(100% + 20px);
-            margin-left: -10px;
+            width: 100%;
+            margin-bottom: 24px;
         }
         
+        .logo { width: 220px; border-radius: 0 !important; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.05)); }
+
         .social-links { 
             display: flex; 
             gap: 12px; 
         } 
         .social-links img { 
-            width: 24px;
-            height: 24px;
+            width: 28px;
+            height: 28px;
+        }
+
+        .red-banner {
+            background-color: var(--primary-red);
+            color: white;
+            padding: 20px;
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 24px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: var(--card-shadow);
         }
         
         .card {
             background: white;
-            padding: 8px 12px;
+            padding: 24px;
             border-radius: 16px;
             box-shadow: var(--card-shadow);
-            margin-bottom: 8px;
+            margin-bottom: 24px;
             text-align: left;
         }
 
-        .form-group { margin-bottom: 12px; }
-        label { font-weight: 600; font-size: 14px; margin-bottom: 6px; display: block; color: var(--text-muted); }
+        .form-group { margin-bottom: 20px; }
+        label { font-weight: 600; font-size: 14px; margin-bottom: 8px; display: block; color: var(--text-muted); }
         input#cedula { 
             width: 100%; 
-            padding: 8px 12px;
+            padding: 16px;
             border: 2px solid #e5e7eb; 
             background-color: #f9fafb; 
             border-radius: 12px; 
-            font-size: 16px;
+            font-size: 18px;
             transition: border-color 0.2s, box-shadow 0.2s;
             outline: none;
         }
@@ -81,11 +91,11 @@
             background-color: white;
         }
         
-        .btn-row { display: flex; gap: 8px; margin-top: 4px; }
+        .btn-row { display: flex; gap: 12px; margin-top: 8px; }
         .btn { 
-            padding: 8px 12px;
+            padding: 16px;
             border-radius: 12px; 
-            font-size: 14px;
+            font-size: 16px;
             font-weight: 600; 
             cursor: pointer; 
             flex: 1; 
@@ -99,50 +109,43 @@
         .btn-orange { background-color: var(--primary-orange); color: white; }
         .btn-outline { background-color: transparent; border: 2px solid #e5e7eb; color: var(--text-muted); }
         
-        .proposal-strip {
-            background-color: var(--primary-red);
-            color: white;
-            padding: 8px;
-            font-size: 13px;
-            font-weight: 700;
-            border-radius: 8px;
-            margin-top: 10px;
-            text-align: center;
-            text-decoration: none;
-            display: block;
-        }
-
         #result-container { display: none; }
         
-        .result-full { border-bottom: 1px solid #f3f4f6; padding: 6px 0; }
+        .result-full { border-bottom: 1px solid #f3f4f6; padding: 16px 0; }
         .result-full:last-child { border-bottom: none; }
-        .result-label { font-size: 10px; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 2px; }
-        .result-value { font-size: 14px; font-weight: 600; color: var(--text-dark); }
+        .result-label { font-size: 11px; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 4px; }
+        .result-value { font-size: 16px; font-weight: 600; color: var(--text-dark); }
         
-        .grid-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 8px 0; }
-        .grid-row-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; margin-top: 4px; }
+        .grid-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 16px 0; }
+        .grid-row-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; margin-top: 16px; }
         
-        .grid-col { padding: 8px; background-color: #f9fafb; border-radius: 10px; text-align: center; }
-        .grid-label { font-size: 9px; font-weight: 700; color: var(--text-muted); text-transform: uppercase; }
-        .grid-value { font-size: 12px; font-weight: 700; color: var(--primary-red); margin-top: 2px; }
+        .grid-col { padding: 12px; background-color: #f9fafb; border-radius: 10px; text-align: center; }
+        .grid-label { font-size: 10px; font-weight: 700; color: var(--text-muted); text-transform: uppercase; }
+        .grid-value { font-size: 14px; font-weight: 700; color: var(--primary-red); margin-top: 4px; }
 
-        .candidate-card {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            padding: 10px;
-            background: #fff;
+        .candidate-info {
+            background-color: #fff9f5;
+            border: 1px dashed var(--primary-orange);
+            padding: 20px;
             border-radius: 12px;
-            border: 1px solid #eee;
-            margin-top: 4px;
-            box-shadow: var(--card-shadow);
+            font-size: 14px;
+            color: #4b5563;
+            font-weight: 500;
+            line-height: 1.6;
+            margin: 32px 0;
+            text-align: center;
         }
-        .candidate-photo {
-            width: 45px;
-            height: 45px;
-            border-radius: 50%;
-            object-fit: cover;
+
+        .proposal-link {
+            margin: 24px 0;
+            font-weight: 700;
         }
+        .proposal-link a {
+            color: var(--primary-red);
+            text-decoration: underline;
+        }
+
+        .footer-text { margin-top: 40px; font-size: 12px; color: var(--text-muted); line-height: 1.5; padding-bottom: 20px; }
 
         #loading-overlay { 
             position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
@@ -172,6 +175,12 @@
             text-align: center;
             box-shadow: var(--card-shadow);
         }
+        .modal-title {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--text-dark);
+        }
         .modal-btns {
             display: flex;
             flex-direction: column;
@@ -192,15 +201,17 @@
     <div id="loading-overlay">Cargando base de datos...</div>
 
     <div class="container">
-        <div class="compact-header">
-            <div style="font-weight: 700; font-size: 13px; color: var(--text-dark); text-align: left; line-height: 1.2;">Padrón ANR 2026 - Fernando de la Mora</div>
+        <div class="header-top">
+            <img src="padronapp1.png" alt="logo" class="logo">
             <div class="social-links">
-                <img src="facl.png" alt="FB">
-                <img src="insl.png" alt="IG">
-                <img src="whal.png" alt="WA">
+                <img src="facl.png" alt="Facebook">
+                <img src="insl.png" alt="Instagram">
+                <img src="whal.png" alt="WhatsApp">
             </div>
         </div>
         
+        <div class="red-banner">Padrón ANR 2026 - Fndo. de la Mora</div>
+
         <div id="search-card" class="card">
             <div class="form-group">
                 <label for="cedula">Cédula de Identidad</label>
@@ -210,11 +221,37 @@
                 <button class="btn btn-orange" id="aceptar">Consultar</button>
                 <button class="btn btn-outline" id="limpiar">Limpiar</button>
             </div>
-            <a href="propuesta.pdf" target="_blank" class="proposal-strip">CONOCÉ NUESTRA PROPUESTA AQUÍ (PDF)</a>
         </div>
 
         <div id="result-container" class="card" style="display: none;">
             <!-- Custom rendered results -->
+        </div>
+
+        <div class="candidate-info">
+            ¡Gracias por tu consulta y tu confianza!<br>
+            <strong>CANDIDATO/A</strong><br>
+            Intendente o Concejal 2026<br>
+            Lista: ___ &nbsp; Opción: ___
+        </div>
+
+        <div class="proposal-link">
+            <a href="#" id="open-proposal">CONOCÉ NUESTRA PROPUESTA (ver)</a>
+        </div>
+
+        <div class="footer-text">
+            Padrón Actualizado de Afiliados a la ANR para las Internas del 07-Junio-2026.
+        </div>
+    </div>
+
+    <!-- Proposal Modal -->
+    <div id="proposal-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-title">PROPUESTA</div>
+            <div class="modal-btns">
+                <button class="btn btn-orange" id="read-online">Leer en Linea</button>
+                <button class="btn btn-outline" id="download-pdf">Descargar PDF</button>
+                <button class="btn" style="color: var(--text-muted); margin-top: 8px;" id="close-modal">Cerrar</button>
+            </div>
         </div>
     </div>
 
@@ -228,8 +265,15 @@
         const searchBtns = document.getElementById('search-btns');
         const cedulaInput = document.getElementById('cedula');
         const containerDiv = document.querySelector('.container');
+        const redBanner = document.querySelector('.red-banner');
         const resultContainer = document.getElementById('result-container');
         
+        const modal = document.getElementById('proposal-modal');
+        const openBtn = document.getElementById('open-proposal');
+        const closeBtn = document.getElementById('close-modal');
+        const readOnlineBtn = document.getElementById('read-online');
+        const downloadPdfBtn = document.getElementById('download-pdf');
+
         loader.style.display = 'flex';
         
         Papa.parse('padronapp.csv', {
@@ -251,11 +295,15 @@
 
         function toggleSearchState(isMinimized) {
             if (isMinimized) {
+                containerDiv.appendChild(searchCard);
                 searchBtns.style.display = 'none';
-                searchCard.style.padding = '12px';
-            } else {
-                searchBtns.style.display = 'flex';
+                searchCard.style.marginTop = '20px';
                 searchCard.style.padding = '16px';
+            } else {
+                redBanner.insertAdjacentElement('afterend', searchCard);
+                searchBtns.style.display = 'flex';
+                searchCard.style.marginTop = '0';
+                searchCard.style.padding = '24px';
             }
         }
 
@@ -274,6 +322,7 @@
             resultContainer.style.display = 'block';
             
             resultContainer.innerHTML = `
+
                 <div class="result-full">
                     <div class="result-label">Nombre Completo</div>
                     <div class="result-value">${record.cedula} - ${record.nombre} ${record.apellido}</div>
@@ -310,13 +359,6 @@
                         <div class="grid-value">${record.edad}</div>
                     </div>
                 </div>
-                <div class="candidate-card">
-                    <img src="logoindex.png" class="candidate-photo" alt="Candidato">
-                    <div style="text-align: left;">
-                        <div style="font-size: 14px; font-weight: 600;">NOMBRE DEL CANDIDATO</div>
-                        <div style="font-size: 14px;">Lista 1 - <b>Opción [X]</b></div>
-                    </div>
-                </div>
             `;
         }
 
@@ -347,6 +389,35 @@
             currentRecord = null;
             renderResult(null);
             toggleSearchState(false);
+        });
+
+        // Modal Logic
+        openBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            modal.style.display = 'flex';
+        });
+
+        closeBtn.addEventListener('click', () => {
+            modal.style.display = 'none';
+        });
+
+        readOnlineBtn.addEventListener('click', () => {
+            window.open('propuesta.pdf', '_blank');
+            modal.style.display = 'none';
+        });
+
+        downloadPdfBtn.addEventListener('click', () => {
+            const link = document.createElement('a');
+            link.href = 'propuesta.pdf';
+            link.download = 'propuesta.pdf';
+            link.click();
+            modal.style.display = 'none';
+        });
+
+        window.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.style.display = 'none';
+            }
         });
 
         if ('serviceWorker' in navigator) {
