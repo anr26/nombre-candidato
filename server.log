@@ -1,0 +1,7 @@
+127.0.0.1 - - [19/Mar/2026 09:10:41] "GET /index.html HTTP/1.1" 200 -
+127.0.0.1 - - [19/Mar/2026 09:10:41] code 404, message File not found
+127.0.0.1 - - [19/Mar/2026 09:10:41] "GET /padronapp1.png HTTP/1.1" 404 -
+127.0.0.1 - - [19/Mar/2026 09:10:41] "GET /padronapp.csv HTTP/1.1" 200 -
+127.0.0.1 - - [19/Mar/2026 09:10:41] "GET /sw.js HTTP/1.1" 200 -
+127.0.0.1 - - [19/Mar/2026 09:10:41] "GET /padronapp.png HTTP/1.1" 200 -
+127.0.0.1 - - [19/Mar/2026 09:10:41] "GET / HTTP/1.1" 200 -
